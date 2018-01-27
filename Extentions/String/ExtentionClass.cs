@@ -5,7 +5,9 @@
 namespace Extentions
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Xml;
     using System.Xml.Serialization;
 
@@ -53,6 +55,20 @@ namespace Extentions
             {
                 throw new Exception("An error occurred", ex);
             }
+        }
+
+        /// <summary>
+        /// Formats the specified strings.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <param name="objects">The objects.</param>
+        /// <returns>
+        /// A formatted string
+        /// </returns>
+        public static string FormatString(this string str, params object[] objects)
+        {
+            var stringList = objects.Select(o => o.ToString());
+            return string.Format(str, stringList.ToArray());
         }
     }
 }

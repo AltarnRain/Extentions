@@ -1,2 +1,2 @@
-mkdir %2 >> deploy.log
-copy %1 %2 >> deploy.log
+mkdir %2
+copy /y %1 %2

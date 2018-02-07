@@ -69,5 +69,16 @@ namespace Extentions
             var stringList = objects.Select(o => o.ToString());
             return string.Format(str, stringList.ToArray());
         }
+
+        /// <summary>
+        /// Saves to file.
+        /// </summary>
+        /// <param name="src">The source.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns></returns>
+        public static void SaveToFile(this string src, string fileName)
+        {
+            File.WriteAllText(fileName, src);
+        }
     }
 }

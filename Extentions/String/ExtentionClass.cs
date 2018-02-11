@@ -96,7 +96,6 @@ namespace Extentions
         /// </summary>
         /// <param name="src">The source.</param>
         /// <param name="fileName">Name of the file.</param>
-        /// <returns></returns>
         public static void SaveToFile(this string src, string fileName)
         {
             File.WriteAllText(fileName, src);

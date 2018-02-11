@@ -94,11 +94,12 @@ namespace Extentions
         /// <summary>
         /// Saves to file.
         /// </summary>
-        /// <param name="str">The string.</param>
+        /// <param name="src">The source.</param>
         /// <param name="fileName">Name of the file.</param>
-        public static void SaveToFile(this string str, string fileName)
+        /// <returns></returns>
+        public static void SaveToFile(this string src, string fileName)
         {
-            File.WriteAllText(fileName, str);
+            File.WriteAllText(fileName, src);
         }
     }
 }

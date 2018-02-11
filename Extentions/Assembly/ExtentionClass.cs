@@ -2,7 +2,7 @@
 // Copyright (c) OI. All rights reserved.
 // </copyright>
 
-namespace Extentions.Assembly
+namespace Extentions
 {
     using System;
     using System.IO;
@@ -20,7 +20,13 @@ namespace Extentions.Assembly
         /// <returns>a string</returns>
         public static string GetDirectoryPath(this Assembly assembly)
         {
-            string filePath = new Uri(assembly.CodeBase).LocalPath;
+            var filePath = new Uri(assembly.CodeBase).LocalPath;
+
+            if (filePath.EndsWith(@"\") == false)
+            {
+                filePath += @"\";
+            }
+
             return Path.GetDirectoryName(filePath);
         }
     }

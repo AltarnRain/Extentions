@@ -57,6 +57,27 @@ namespace Extentions
         }
 
         /// <summary>
+        /// Deserializes the specified XML string.
+        /// </summary>
+        /// <typeparam name="T">An class</typeparam>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>
+        /// Object of type T
+        /// </returns>
+        /// <exception cref="FileNotFoundException">File '{0}' was not found".FormatString(fileName)</exception>
+        public static T DeserializeFile<T>(this string fileName)
+                  where T : class
+        {
+            if (File.Exists(fileName) == false)
+            {
+                throw new FileNotFoundException("File '{0}' was not found".FormatString(fileName), fileName);
+            }
+
+            var xmlString = File.ReadAllText(fileName);
+            return xmlString.Deserialize<T>();
+        }
+
+        /// <summary>
         /// Formats the specified strings.
         /// </summary>
         /// <param name="str">The string.</param>
@@ -68,6 +89,16 @@ namespace Extentions
         {
             var stringList = objects.Select(o => o.ToString());
             return string.Format(str, stringList.ToArray());
+        }
+
+        /// <summary>
+        /// Saves to file.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <param name="fileName">Name of the file.</param>
+        public static void SaveToFile(this string str, string fileName)
+        {
+            File.WriteAllText(fileName, str);
         }
     }
 }
